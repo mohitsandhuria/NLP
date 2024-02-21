@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.INFO,format="[%(asctime)s]: %(message)s")
 project_name="text_summarizer"
 folder="Text_Summarizer"
 list_file=[
-    ".github/worlflows/.gitkeep",
+    f"{folder}/.github/worlflows/.gitkeep",
     f"{folder}/src/{project_name}/__init__.py",
     f"{folder}/src/{project_name}/components/__init__.py",
     f"{folder}/src/{project_name}/utils/__init__.py",
@@ -31,6 +31,7 @@ list_file=[
 
 for files in list_file:
     file_path=Path(files)
+    print(file_path)
     filedir, filename = os.path.split(file_path)
 
     if filedir!="":
@@ -38,7 +39,7 @@ for files in list_file:
         logging.info(f"Creating files:{filename} and directories: {filedir}")
 
     if (not os.path.exists(file_path)) or (os.path.getsize(file_path) == 0):
-        with open(os.path.exists(file_path),"w") as f:
+        with open(file_path,"w") as f:
             pass
             logging.info(f"Creating files:{file_path}")
     
